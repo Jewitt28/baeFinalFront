@@ -1,0 +1,135 @@
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 5) 0%,
+    rgb(48, 48, 48) 35%,
+    rgb(2, 0, 36) 100%
+  );
+  /*background: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);    */
+  margin: 30;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Center the search component vertically and horizontally */
+.citSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.searchBut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0, 50;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #113fa2;
+  border-radius: 5px;
+}
+
+.search-form label {
+  margin-bottom: 10px;
+  
+}
+
+.search-form input {
+  margin-bottom: 10px;
+    text-align: center;
+
+  padding: 5px;
+  border: 1px solid #343333;
+  border-radius: 3px;
+}
+
+.search-form button {
+  padding: 10px;
+  background-color: rgb(132, 132, 137);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Additional styling for the search component */
+#root {
+  width: 50%; /* Adjust the width as needed */
+  padding: 10%;
+/* }
+.card {
+  width: 300px;
+  margin: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+}
+
+.card-header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-header li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.card-header .nav-link {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.card-header .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.card-text {
+  margin-bottom: 20px;
+  color: #555;
+} */
+
+}

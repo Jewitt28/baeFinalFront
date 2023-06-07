@@ -77,8 +77,24 @@ code {
 #root {
   width: 50%; /* Adjust the width as needed */
   padding: 10%;
-/* }
-.card {
+
+}
+ 
+.money-container {
+  display: flex;
+}
+
+.money-card {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.tables-container {
+  flex: 1;
+
+
+}
+/* .card {
   width: 300px;
   margin: 20px;
   border: none;
@@ -129,7 +145,6 @@ code {
 
 .card-text {
   margin-bottom: 20px;
-  color: #555;
-} */
+  color: #555; */
 
-}
+ /* } */ 

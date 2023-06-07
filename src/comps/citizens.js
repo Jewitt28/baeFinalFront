@@ -15,7 +15,7 @@ const Citizens = () => {
   async function fetchCitizenDetails(citizenId) {
     try {
       // Make an API call to fetch citizen details
-      const response = await fetch(`http://localhost:8080/citizen/${citizenId}`);
+      const response = await fetch(`http://18.168.246.188/citizen/read/${citizenId}`)//(`http://http://dataset.c7d3rtdqfpxc.eu-west-2.rds.amazonaws.com/citizen`);
       const data = await response.json();
       setCitizen(data);
     } catch (error) {

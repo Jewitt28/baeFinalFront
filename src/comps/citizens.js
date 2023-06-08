@@ -40,6 +40,7 @@ const Citizens = () => {
           <p className="card-text">Place of Birth: {citizen.placeOfBirth}</p>
           <p className="card-text">Home Address: {citizen.address}</p>
           <p className="card-text">Sex: {citizen.sex}</p>
+          <p className="card-text">Drivers License ID: {citizen.driverLicenseID}</p>
           {/* Render additional details and related data from other tables */}
         </div>
       </div>

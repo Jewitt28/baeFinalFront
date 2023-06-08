@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import BankCards from './bankCards';
 import BankAccountHolders from './bankAccountHolders';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaFlag } from '@fortawesome/fontawesome-svg-core';
 
 const Money = () => {
   const [showBankAccounts, setShowBankAccounts] = useState(false);
@@ -29,8 +30,8 @@ const Money = () => {
     <div>
       <div className="card">
         <div className="card-body">
-          <FontAwesomeIcon icon="fa-solid fa-circle-sterling" />
-          <h5 className="card-title">Financial Information</h5>
+        <FontAwesomeIcon icon="fa-solid fa-flag" />                <h5 className="card-title">Financial Information</h5>
+          <p>---- OVERVIEW INFO HERE -----</p>
           <button className="btn btn-link" onClick={handleBankAccountsClick}>
             Examine Bank Accounts
           </button>

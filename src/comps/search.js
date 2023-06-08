@@ -1,18 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
+import CitizenContext from '../store/citizen-context';
 
-const Search = ({ citizens, setCitizenFound }) => {
+const Search = ()  => {
+  const citizenCtx = useContext(CitizenContext);
+  const [citizens, setCitizens] = useState([]);
+  const [citizenFound, setCitizenFound] = useState(false);
+  // const [userInput, setUserInput] = useState('');  
   const [forenames, setForename] = useState('');
   const [lastName, setLastName] = useState('');
+
+  useEffect(() => {
+    const fetchCitizen = async () => {
+      try {
+        console.log(1)
+        const response = await fetch('http://localhost:8080/citizen/read');
+        const data = await response.json();
+        setCitizens(data);
+
+        // // Check if there is a matching citizen
+        // const isCitizenFound = data.some((c) =>
+        //   // Your matching condition logic here
+        //   // For example, if citizen.name matches user input, set it to true
+        //    c.forenames === forenames && c.surname === lastName
+        //   );
+        // setCitizenFound(isCitizenFound);
+      } catch (error) {
+        console.error('Error fetching citizens:', error);
+      }
+    };
+
+    fetchCitizen();
+  }, []);
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    //setUserInput(true);
+
     const matchingCitizen = citizens.find(
-      (citizen) => citizen.forenames === forenames && citizen.surname === lastName
+      (c) => c.forenames === forenames && c.surname === lastName
     );
     if (matchingCitizen) {
-      setCitizenFound(true);
-    }
+      citizenCtx.selectCitizen(matchingCitizen);
+     
+
+
+    
+    };
   };
 
   return (

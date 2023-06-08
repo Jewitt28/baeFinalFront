@@ -1,10 +1,13 @@
 import React from 'react';
-import Vehicles from './vehicles';
+import VehicleOverview from './vehicleOverview';
 import Money from './money';
 import Phone from './phone';
 import Location from './location';
-import BankAccountHolders from './bankAccountHolders'; // Import BankAccountHolders component
-import BankCards from './bankCards'; // Import BankCards component
+import BankAccountHolders from './bankAccountHolders'; 
+import BankCards from './bankCards'; 
+// import { FaFlag } from '@fortawesome/fontawesome-svg-core';
+
+
 
 function Overview() {
   const [activeTab, setActiveTab] = React.useState('Vehicles');
@@ -12,20 +15,19 @@ function Overview() {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
-
   const renderTabContent = () => {
     switch (activeTab) {
       case 'Vehicles':
-        return <Vehicles />;
+        return <VehicleOverview />;
       case 'FinancialInfo':
         return <Money />;
       case 'Phone':
         return <Phone />;
       case 'Location':
         return <Location />;
-      case 'BankAccountHolders': // Include BankAccountHolders case
+      case 'BankAccountHolders':
         return <BankAccountHolders />;
-      case 'BankCards': // Include BankCards case
+      case 'BankCards':
         return <BankCards />;
       default:
         return null;
@@ -66,7 +68,7 @@ function Overview() {
         <h5 className="card-title"></h5>
         <p className="card-text">citizen.forenames | citizen.surname</p>
         {renderTabContent()}
-        <button className="btn btn-primary">Return To Search</button>
+        <button className="btn btn-primary" >Return To Search</button>
       </div>
     </div>
   );

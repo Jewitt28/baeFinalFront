@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const Vehicles = () => {
+  
   const [vehicles, setVehicles] = useState([]);
   const [selectedVehicleId, setSelectedVehicleId] = useState(null);
+
+  
 
   useEffect(() => {
     fetchVehicles()

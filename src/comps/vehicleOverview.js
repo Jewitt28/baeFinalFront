@@ -2,39 +2,68 @@ import React, { useState } from 'react';
 import Vehicles from './vehicles';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import VehicleRegistrations from './vehicleRegistrations';
+
+
 
 const VehicleOverview = () => {
+  const [showVehicles, setShowVehicles] = useState(false);
+  const [showVehicleRegistrations, setShowVehicleRegistrations] = useState(false);
+  const [showTable, setShowTable] = useState(true);
 
-    const [vehicles, setVehicles] = useState (null);
-
-
-
-if (!vehicles) {
-    return <div>Searching Database for match...</div>;
+    // const [vehicles, setVehicles] = useState (null);
+    const handleVehiclesClick = () => {
+      
+      setShowVehicles(true);
+      setShowVehicleRegistrations(false);
+      setShowTable(true);
+    };
   
-}
+    const handleVehicleRegistrationsClick = () => {
+      setShowVehicles(false);
+      setShowVehicleRegistrations(true);
+      setShowTable(true);
+    };
+  
+    const handleTableClose = () => {
+      setShowTable(false);
+    };
 
-return (
 
-<div>
+// if (!vehicles) {
+//     return <div>Searching Database for match...</div>;
+  
+// }
 
 
-      <h2>Vehicle Registration Information</h2>
+  return (
+    <div>
       <div className="card">
         <div className="card-body">
-        <FontAwesomeIcon icon="fa-duotone fa-car" />
-        
-          <h5 className="card-title">Registered Vehicles:{vehicles.vehicleRegistrationNo}</h5>
-          <p className="card-text">Make: {vehicles.make}</p>
-          <p className="card-text">Model: {vehicles.model}</p>
-          <p className="card-text">Colour: {vehicles.colour}</p>
-          <Link className="card-link" to={"/vehicleRegistrations"}>More Info</Link>
-          
+        <FontAwesomeIcon icon="fa-solid fa-flag" />                
+        <h5 className="card-title">Vehicle Information</h5>
+          <p>---- any flagged info such as anpr obs -----</p>
+          <button className="btn btn-link" onClick={handleVehiclesClick}>
+            Registered Vehicles
+          </button>
+          <button className="btn btn-link" onClick={handleVehicleRegistrationsClick}>
+            Vehicle Registration Info 
+          </button>
         </div>
-</div>
-</div>
+      </div>
 
-)
+      {showTable && (showVehicles || showVehicleRegistrations) && (
+        <div>
+          {showVehicles && <Vehicles />}
+          {showVehicleRegistrations && <VehicleRegistrations />}
+          <br />
+          <button className="btn btn-warning" onClick={handleTableClose}>
+            Close Table
+          </button>
+        </div>
+      )}
+    </div>
+  );
 
 
 }

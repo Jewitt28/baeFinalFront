@@ -11,7 +11,7 @@ import ANPRCamera from './comps/ANPRCamera';
 import ANPRObservations from './comps/ANPRObservations';
 import LandingPage from './comps/landingPage';
 import Money from './comps/money';
-import Citizens from './comps/citizens';
+import Citizens from './pages/citizens';
 import Vehicles from './comps/vehicles';
 import MobileCallRecords from './comps/mobileCallRecords';
 import Phone from './comps/phone';
@@ -27,6 +27,7 @@ import SubscriberRecords from './comps/subscriberRecords';
 import Overview from './comps/overview';
 import VehicleOverview from './comps/vehicleOverview';
 import CitizenContext from './store/citizen-context';
+import Home from './pages/Home';
 
 
 
@@ -43,7 +44,7 @@ function App() {
     const fetchCitizen = async () => {
       try {
         console.log(1)
-        const response = await fetch('http://localhost:8080/citizens/read');
+        const response = await fetch('http://18.168.246.188:8080/citizen/read');
 
         const data = await response.json();
         setCitizen(data);
@@ -73,7 +74,8 @@ return (
 
 
   <Routes>
-    <Route exact path="/" element={isCitizenSelected ? <Overview /> : <Search />} />
+    {/* <Route exact path="/" element={isCitizenSelected ? <Overview /> : <Search />} /> */}
+    <Route exact path='/' element={<Home />} />
     <Route exact path="/search" element={<Search />} />
     <Route path="/inputform" element={<InputForm />} />
     <Route path="/ATMPoint" element={<ATMPoint />} />

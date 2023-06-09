@@ -23,7 +23,7 @@ const Vehicles = () => {
 
   const fetchVehicles = async () => {
     try {
-      const response = await fetch('http://localhost:3000/vehicles');
+      const response = await fetch('http://18.168.246.188:8080/vehicles');
       if (!response.ok) {
         throw new Error('An error occurred while fetching vehicles data.');
       }

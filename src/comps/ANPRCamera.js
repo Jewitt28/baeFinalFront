@@ -16,7 +16,7 @@ const AnprCamera = () => {
 
   const fetchAnprCameras = async () => {
     try {
-      const response = await fetch('http://localhost:3000/anpr-cameras');
+      const response = await fetch('http://18.168.246.188:8080/anpr-cameras');
       if (!response.ok) {
         throw new Error('An error occurred while fetching ANPR cameras data.');
       }
@@ -37,15 +37,21 @@ const AnprCamera = () => {
             <th>Street Name</th>
             <th>Latitude</th>
             <th>Longitude</th>
+            <th>Actions</th>
+
           </tr>
         </thead>
         <tbody>
-          {cameras.map(camera => (
-            <tr key={camera.anprId}>
-              <td>{camera.anprId}</td>
-              <td>{camera.streetName}</td>
-              <td>{camera.latitude}</td>
-              <td>{camera.longitude}</td>
+          {cameras.map(data => (
+            <tr key={data.anprId}>
+              <td>{data.anprId}</td>
+              <td>{data.streetName}</td>
+              <td>{data.latitude}</td>
+              <td>{data.longitude}</td>
+              <td>
+              <button type="text">Overview</button>
+              </td>
+
             </tr>
           ))}
         </tbody>

@@ -15,7 +15,7 @@ const EPOSTerminals = () => {
 
   const fetchEPOSTerminals = async () => {
     try {
-      const response = await fetch('http://localhost:3000/epos-terminals');
+      const response = await fetch('http://18.168.246.188:8080/epos-terminals');
       if (!response.ok) {
         throw new Error('An error occurred while fetching EPOS terminals data.');
       }
@@ -38,17 +38,22 @@ const EPOSTerminals = () => {
             <th>Postcode</th>
             <th>Latitude</th>
             <th>Longitude</th>
+            <th>Actions</th>
+
           </tr>
         </thead>
         <tbody>
-          {terminals.map(terminal => (
-            <tr key={terminal.id}>
-              <td>{terminal.id}</td>
-              <td>{terminal.vendor}</td>
-              <td>{terminal.streetName}</td>
-              <td>{terminal.postcode}</td>
-              <td>{terminal.latitude}</td>
-              <td>{terminal.longitude}</td>
+          {terminals.map(data => (
+            <tr key={data.id}>
+              <td>{data.id}</td>
+              <td>{data.vendor}</td>
+              <td>{data.streetName}</td>
+              <td>{data.postcode}</td>
+              <td>{data.latitude}</td>
+              <td>{data.longitude}</td>
+              <td>
+                <button type="text">Overview</button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -15,7 +15,7 @@ const VehicleRegistrations = () => {
 
   const fetchVehicleRegistrations = async () => {
     try {
-      const response = await fetch('http://localhost:3000/vehicle-registrations');
+      const response = await fetch('http://18.168.246.188:8080/vehicleRegistrations/read');
       if (!response.ok) {
         throw new Error('An error occurred while fetching vehicle registrations data.');
       }
@@ -36,28 +36,29 @@ const VehicleRegistrations = () => {
             <th>Vehicle Registration No</th>
             <th>Make</th>
             <th>Model</th>
+            <th>Colour</th>
+            <th>Actions</th>
+
             
-            <th>Address</th>
-            <th>Citizen ID</th>
-            <th>Driver License ID</th>
           </tr>
         </thead>
         <tbody>
-          {registrations.map(registration => (
-            <tr key={registration.registrationId}>
-              <td>{registration.registrationId}</td>
-              <td>{registration.registrationDate}</td>
-              <td>{registration.vehicleRegistrationNo}</td>
-              <td>{registration.make}</td>
-              <td>{registration.model}</td>
-              {/* <td>{registration.forenames}</td>
-              <td>{registration.surname}</td> */}
-              <td>{registration.address}</td>
-              <td>{registration.driverLicenseID}</td>
+          {registrations.map(data => (
+            <tr>
+              <td>{data.registrationId}</td>
+              <td>{data.registrationDate}</td>
+              <td>{data.vehicleRegistrationNo}</td>
+              <td>{data.make}</td>
+              <td>{data.model}</td>
+              <td>{data.colour}</td>
+              <td>
+                <button type="text">Overview</button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+    
     </div>
   );
 };

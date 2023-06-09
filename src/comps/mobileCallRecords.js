@@ -16,7 +16,7 @@ const MobileCallRecords = () => {
 
   const fetchMobileCallRecords = async () => {
     try {
-      const response = await fetch('http://localhost:3000/mobile-call-records');
+      const response = await fetch('http://18.168.246.188:8080/mobile-call-records');
       if (!response.ok) {
         throw new Error('An error occurred while fetching mobile call records data.');
       }
@@ -38,16 +38,22 @@ const MobileCallRecords = () => {
             <th>Call Cell Tower ID</th>
             <th>Receiver MSISDN</th>
             <th>Receiver Tower ID</th>
+            <th>Subscriber Record ID</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {callRecords.map(callRecord => (
-            <tr key={callRecord.id}>
-              <td>{callRecord.event_time}</td>
-              <td>{callRecord.callerMSISDN}</td>
-              <td>{callRecord.callCellTowerId}</td>
-              <td>{callRecord.receiverMSISDN}</td>
-              <td>{callRecord.receiverTowerId}</td>
+          {callRecords.map(data => (
+            <tr key={data.id}>
+              <td>{data.timeStamp}</td>
+              <td>{data.callerMSISDN}</td>
+              <td>{data.callCellTowerId}</td>
+              <td>{data.receiverMSISDN}</td>
+              <td>{data.receiverTowerId}</td>
+              <td>{data.subscriberRecordId}</td>
+              <td>
+                <button type="text">Overview</button>
+              </td>
             </tr>
           ))}
         </tbody>

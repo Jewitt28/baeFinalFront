@@ -34,21 +34,19 @@ const BankCards = () => {
           <tr>
             <th>Bank Card ID</th>
             <th>Card Number</th>
-            <th>Sort Code</th>
             <th>Bank Account ID</th>
-            <th>Account Number</th>
-            <th>Bank</th>
+            <th>Actions</th>
+
           </tr>
         </thead>
         <tbody>
-          {bankCards.map(card => (
-            <tr key={card.bankcardId}>
-              <td>{card.bankcardId}</td>
-              <td>{card.cardNumber}</td>
-              <td>{card.sortCode}</td>
-              <td>{card.bankAccountId}</td>
-              <td>{card.accountNumber}</td>
-              <td>{card.bank}</td>
+          {bankCards.map(data => (
+            <tr key={data.bankcardId}>
+              <td>{data.bankcardId}</td>
+              <td>{data.bankAccountId}</td>
+              <td>
+                <button type="text">Overview</button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -17,7 +17,7 @@ const BankAccountHolders = () => {
 
   const fetchBankAccountHolders = async () => {
     try {
-      const response = await fetch('http://localhost:3000/bank-account-holders');
+      const response = await fetch('http://18.168.246.188:8080/bank-account-holders');
       if (!response.ok) {
         throw new Error('An error occurred while fetching bank account holders data.');
       }
@@ -37,22 +37,25 @@ const BankAccountHolders = () => {
             <th>Bank Account ID</th>
             <th>Account Number</th>
             <th>Bank</th>
-            <th>Forenames</th>
-            <th>Surname</th>
-            <th>Date of Birth</th>
-            <th>Home Address</th>
+            <th>Sort Code</th>
+            <th>Citizen ID</th>
+            <th>Actions</th>
+
+            
           </tr>
         </thead>
         <tbody>
-          {accountHolders.map(holder => (
-            <tr key={holder.bankAccountId}>
-              <td>{holder.bankAccountId}</td>
-              <td>{holder.accountNumber}</td>
-              <td>{holder.bank}</td>
-              <td>{holder.forenames}</td>
-              <td>{holder.surname}</td>
-              <td>{holder.dateOfBirth}</td>
-              <td>{holder.homeAddress}</td>
+          {accountHolders.map(data => (
+            <tr key={data.bankAccountId}>
+              <td>{data.bankAccountId}</td>
+              <td>{data.accountNumber}</td>
+              <td>{data.bank}</td>
+              <td>{data.sortCode}</td>
+              <td>{data.citizenId}</td>
+              <td>
+                <button type="text">Overview</button>
+              </td>
+              
             </tr>
          
          ))}

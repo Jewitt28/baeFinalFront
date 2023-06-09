@@ -13,7 +13,7 @@ const Search = ()  => {
     const fetchCitizen = async () => {
       try {
         console.log(1)
-        const response = await fetch('http://localhost:8080/citizen/read');
+        const response = await fetch('http://18.168.246.188:8080/citizen/read');
         const data = await response.json();
         setCitizens(data);
 
@@ -70,6 +70,24 @@ const Search = ()  => {
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
+        <input
+          type="text"
+          id="startYear"
+          name="startYear"
+          placeholder="Start Year"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <input
+          type="text"
+          id="endYear"
+          name="endYear"
+          placeholder="End Year"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+
+        
         <button type="submit" className=" submit btn btn-outline-primary">Submit</button>
         
       </form>

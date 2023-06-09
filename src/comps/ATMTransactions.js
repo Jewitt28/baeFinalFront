@@ -15,7 +15,7 @@ const ATMTransactions = () => {
 
   const fetchATMTransactions = async () => {
     try {
-      const response = await fetch('http://localhost:3000/atm-transactions');
+      const response = await fetch('http://18.168.246.188:8080/atm-transactions');
       if (!response.ok) {
         throw new Error('An error occurred while fetching ATM transactions data.');
       }
@@ -32,21 +32,25 @@ const ATMTransactions = () => {
       <table>
         <thead>
           <tr>
-            <th>Event Time</th>
             <th>ATM ID</th>
+            <th>Event Time</th>
             <th>Bank Card Number</th>
             <th>Transaction Type</th>
             <th>Amount</th>
+            <th>Bank Card ID</th>
+            <th>ATM Transaction ID</th>
+
           </tr>
         </thead>
         <tbody>
-          {transactions.map(transaction => (
-            <tr key={transaction.event_time}>
-              <td>{transaction.event_time}</td>
-              <td>{transaction.atmId}</td>
-              <td>{transaction.bankCardNumber}</td>
-              <td>{transaction.transaction_type}</td>
-              <td>{transaction.amount}</td>
+          {transactions.map(data => (
+            <tr key={data.atmId}>
+              <td>{data.timeStamp}</td>
+              <td>{data.atmId}</td>
+              <td>{data.bankCardNumber}</td>
+              <td>{data.type}</td>
+              <td>{data.amount}</td>
+              <td>{data.atmTrsactionId}</td>
             </tr>
           ))}
         </tbody>

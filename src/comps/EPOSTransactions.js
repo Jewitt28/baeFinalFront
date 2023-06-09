@@ -15,7 +15,7 @@ const EPOSTransactions = () => {
 
   const fetchEPOSTransactions = async () => {
     try {
-      const response = await fetch('http://localhost:3000/epos-transactions');
+      const response = await fetch('http://18.168.246.188:8080/epos-transactions');
       if (!response.ok) {
         throw new Error('An error occurred while fetching EPOS transactions data.');
       }
@@ -37,16 +37,21 @@ const EPOSTransactions = () => {
             <th>Bank Card Number</th>
             <th>Payee Account</th>
             <th>Amount</th>
+            <th>Actions</th>
+
           </tr>
         </thead>
         <tbody>
-          {transactions.map(transaction => (
-            <tr key={transaction.eposId}>
-              <td>{transaction.event_time}</td>
-              <td>{transaction.eposId}</td>
-              <td>{transaction.bankCardNumber}</td>
-              <td>{transaction.payeeAccount}</td>
-              <td>{transaction.amount}</td>
+          {transactions.map(data => (
+            <tr key={data.eposId}>
+              <td>{data.timeStamp}</td>
+              <td>{data.eposId}</td>
+              <td>{data.bankCardNumber}</td>
+              <td>{data.type}</td>
+              <td>{data.amount}</td>
+              <td>
+                <button type="text">Overview</button>
+              </td>
             </tr>
           ))}
         </tbody>

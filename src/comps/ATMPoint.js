@@ -15,7 +15,7 @@ const ATMPoint = () => {
 
   const fetchATMPoints = async () => {
     try {
-      const response = await fetch('http://localhost:3000/atm-points');
+      const response = await fetch('http://18.168.246.188:8080/atm-points');
       if (!response.ok) {
         throw new Error('An error occurred while fetching ATM points data.');
       }
@@ -41,14 +41,14 @@ const ATMPoint = () => {
           </tr>
         </thead>
         <tbody>
-          {points.map(point => (
-            <tr key={point.atmId}>
-              <td>{point.atmId}</td>
-              <td>{point.operator}</td>
-              <td>{point.streetName}</td>
-              <td>{point.postcode}</td>
-              <td>{point.latitude}</td>
-              <td>{point.longitude}</td>
+          {points.map(data => (
+            <tr key={data.atmId}>
+              <td>{data.atmId}</td>
+              <td>{data.operator}</td>
+              <td>{data.streetName}</td>
+              <td>{data.postcode}</td>
+              <td>{data.latitude}</td>
+              <td>{data.longitude}</td>
             </tr>
           ))}
         </tbody>

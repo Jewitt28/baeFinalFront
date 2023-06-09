@@ -16,7 +16,7 @@ const AnprObservations = () => {
 
   const fetchAnprObservations = async () => {
     try {
-      const response = await fetch('http://localhost:3000/anpr-observations');
+      const response = await fetch('http://18.168.246.188:8080/anpr-observations');
       if (!response.ok) {
         throw new Error('An error occurred while fetching ANPR observations data.');
       }
@@ -36,14 +36,19 @@ const AnprObservations = () => {
             <th>ANPR Point ID</th>
             <th>Event Time</th>
             <th>Vehicle Registration Number</th>
+            <th>Actions</th>
+
           </tr>
         </thead>
         <tbody>
-          {observations.map(observation => (
-            <tr key={observation.anprPointId}>
-              <td>{observation.anprPointId}</td>
-              <td>{observation.event_time}</td>
-              <td>{observation.vehicleRegistrationNumber}</td>
+          {observations.map(data => (
+            <tr key={data.anprPointId}>
+              <td>{data.anprPointId}</td>
+              <td>{data.timeStamp}</td>
+              <td>{data.vehicleRegistrationNumber}</td>
+              <td>
+                <button type="text">Overview</button>
+              </td>
             </tr>
           ))}
         </tbody>

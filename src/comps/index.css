@@ -1,9 +1,9 @@
 body {
   background: linear-gradient(
     90deg,
-    rgba(2, 0, 36, 5) 0%,
+    rgba(20, 66, 36, 15) 0%,
     rgb(48, 48, 48) 35%,
-    rgb(2, 0, 36) 100%
+    rgb(4, 17, 9) 100%
   );
   /*background: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);    */
   margin: 30;
@@ -46,7 +46,7 @@ code {
   flex-direction: column;
   width: 300px;
   padding: 20px;
-  border: 1px solid #113fa2;
+  border: 1px solid #48494c;
   border-radius: 5px;
 }
 
@@ -85,7 +85,7 @@ code {
 }
 
 .money-card {
-  flex: 1;
+  flex: 2;
   margin-right: 20px;
 }
 
@@ -94,6 +94,72 @@ code {
 
 
 }
+.card {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+/* Styling for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Styling for table header */
+thead {
+  background-color: #f2f2f2;
+}
+
+/* Styling for table header cells */
+th {
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Styling for table body cells */
+td {
+  padding: 10px;
+}
+
+/* Styling for table rows on hover */
+tbody tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.row.g-0 {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.col-md-8,
+.col-md-4 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
 /* .card {
   width: 300px;
   margin: 20px;

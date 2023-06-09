@@ -40,22 +40,6 @@ const Vehicles = () => {
 
   return (
 
-
-<div>
-      <h2>Vehicle Information</h2>
-      <div className="card">
-        <div className="card-body">
-        <FontAwesomeIcon icon="fa-duotone fa-car" />
-
-          <h5 className="card-title">Registered Vehicles:{vehicles.vehicleRegistrationNo}</h5>
-          <p className="card-text">Make: {vehicles.make}</p>
-          <p className="card-text">Model: {vehicles.model}</p>
-          <p className="card-text">Colour: {vehicles.colour}</p>
-          <Link className="link" to="/vehicleRegistrations">More Info</Link>
-          
-        </div>
-        
-      </div>
     <div>
       <h3>Registered Vehicles</h3>
       <table>
@@ -80,7 +64,6 @@ const Vehicles = () => {
       </table>
 
      {/* {selectedVehicleId && <VehicleDetails vehicleId={selectedVehicleId} />} */}
-    </div>
     </div>
   );
 };

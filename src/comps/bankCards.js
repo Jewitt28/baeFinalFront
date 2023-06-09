@@ -15,7 +15,7 @@ const BankCards = () => {
 
   const fetchBankCards = async () => {
     try {
-      const response = await fetch('http://localhost:3000/bank-cards');
+      const response = await fetch('http://localhost:8080/bank-cards');
       if (!response.ok) {
         throw new Error('An error occurred while fetching bank cards data.');
       }

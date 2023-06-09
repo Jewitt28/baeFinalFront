@@ -32,15 +32,13 @@ const VehicleRegistrations = () => {
       <table>
         <thead>
           <tr>
-            <th>Registration ID</th>
             <th>Registration Date</th>
             <th>Vehicle Registration No</th>
             <th>Make</th>
             <th>Model</th>
-            <th>Forenames</th>
-            <th>Surname</th>
+            
             <th>Address</th>
-            <th>Date of Birth</th>
+            <th>Citizen ID</th>
             <th>Driver License ID</th>
           </tr>
         </thead>
@@ -52,10 +50,9 @@ const VehicleRegistrations = () => {
               <td>{registration.vehicleRegistrationNo}</td>
               <td>{registration.make}</td>
               <td>{registration.model}</td>
-              <td>{registration.forenames}</td>
-              <td>{registration.surname}</td>
+              {/* <td>{registration.forenames}</td>
+              <td>{registration.surname}</td> */}
               <td>{registration.address}</td>
-              <td>{registration.dateOfBirth}</td>
               <td>{registration.driverLicenseID}</td>
             </tr>
           ))}

@@ -43,7 +43,8 @@ function App() {
     const fetchCitizen = async () => {
       try {
         console.log(1)
-        const response = await fetch('http://localhost:8080/citizen/read');
+        const response = await fetch('http://localhost:8080/citizens/read');
+
         const data = await response.json();
         setCitizen(data);
 

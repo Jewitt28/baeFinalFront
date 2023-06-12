@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Citizens = () => {
   const location = useLocation();
   const [citizen, setCitizen] = useState([]);
   const [hadError, setHadError] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     console.log(location.state)
-    // Fetch citizen details based on citizenId from location state or URL params
-    // const citizenId = location.state?.citizenId || ''; // Assuming citizenId is passed in location state
+   
     fetchCitizenDetails();
   }, [location.state]);
 
@@ -46,7 +47,7 @@ const Citizens = () => {
         else return false;
       })
     }
-
+   
     // render the citizen data
     return dataToRender.map(data => (
       <tr>
@@ -56,34 +57,28 @@ const Citizens = () => {
         <td>{data.address}</td>
         <td>{data.dateOfBirth}</td>
         <td>
-          <button type="text">Overview</button>
+        <button type="button" className="overview-button" onClick={() => handleOverviewClick(data.citizenId)}>
+            Overview
+          </button>
         </td>
       </tr>
     ));
   }
 
+  const handleOverviewClick = (citizenId) => {
+    navigate(`/overview/${citizenId}`);
+  };
+
   if (!hadError && citizen.length === 0) {
     return <div>Loading data from API...</div>;
   }
-  if (hadError) return <div>Something went wrong loading the data, please try again at a later time!</div>
-
+  if (hadError) return <div>Something went wrong loading the data, please try again at a later time!</div>;
 
   return (
     <div>
       <h1>Citizen Details</h1>
-      {/* <div className="citCard">
-        <div className="card-body">
-          <h5 className="card-title">{citizen.forenames} {citizen.surname}</h5>
-          <p className="card-text">Date of Birth: {citizen.dateOfBirth}</p>
-          <p className="card-text">Place of Birth: {citizen.placeOfBirth}</p>
-          <p className="card-text">Home Address: {citizen.address}</p>
-          <p className="card-text">Sex: {citizen.sex}</p>
-          <p className="card-text">Drivers License ID: {citizen.driverLicenseID}</p> */}
-          {/* Render additional details and related data from other tables */}
-        {/* </div>
-      </div> */}
 
-      <table style={{ backgroundColor: "whitesmoke"}}>
+      <table className="citizens-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -94,24 +89,8 @@ const Citizens = () => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          {/* {citizen.map(data => (
-            <tr>
-              <td>{data.citizenId}</td>
-              <td>{data.forenames}</td>
-              <td>{data.surname}</td>
-              <td>{data.address}</td>
-              <td>{data.dateOfBirth}</td>
-              <td>
-                <button type="text">Overview</button>
-              </td>
-            </tr>
-          ))} */}
-          {renderCitizens()}
-        </tbody>
+        <tbody>{renderCitizens()}</tbody>
       </table>
-      
-      
     </div>
   );
 };

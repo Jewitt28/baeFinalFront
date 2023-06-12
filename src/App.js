@@ -6,28 +6,28 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import Search from './comps/search';
-import InputForm from './comps/inputform';
-import ANPRCamera from './comps/ANPRCamera';
-import ANPRObservations from './comps/ANPRObservations';
-import LandingPage from './comps/landingPage';
+import ANPRCamera from './comps/GPS/ANPRCamera';
+import ANPRObservations from './comps/GPS/ANPRObservations';
 import Money from './comps/money';
 import Citizens from './pages/citizens';
-import Vehicles from './comps/vehicles';
-import MobileCallRecords from './comps/mobileCallRecords';
-import Phone from './comps/phone';
+import Vehicles from './comps/Vehicle/vehicles';
+import MobileCallRecords from './comps/Communications/mobileCallRecords';
+import Phone from './comps/Communications/phone';
 import Location from './comps/location';
-import CellTower from './comps/cellTowers';
-import VehicleRegistrations from './comps/vehicleRegistrations';
-import ATMPoint from './comps/ATMPoint';
-import ATMTransactions from './comps/ATMTransactions';
-import BankCards from './comps/bankCards';
-import BankAccountHolders from './comps/bankAccountHolders';
-import EPOSTransactions from './comps/EPOSTransactions';
-import SubscriberRecords from './comps/subscriberRecords';
-import Overview from './comps/overview';
-import VehicleOverview from './comps/vehicleOverview';
+import CellTower from './comps/Communications/cellTowers';
+import VehicleRegistrations from './pages/vehicleRegistrations';
+import ATMPoint from './comps/Finance/ATMPoint';
+import ATMTransactions from './comps/Finance/ATMTransactions';
+import BankCards from './comps/Finance/bankCards';
+import BankAccountHolders from './comps/Finance/bankAccountHolders';
+import EPOSTransactions from './comps/Finance/EPOSTransactions';
+import SubscriberRecords from './pages/subscriberRecords';
+import Overview from './pages/overview';
+import VehicleOverview from './comps/Vehicle/vehicleOverview';
 import CitizenContext from './store/citizen-context';
 import Home from './pages/Home';
+import Login from './comps/login';
+import { Navbar } from 'react-bootstrap';
 
 
 
@@ -43,7 +43,6 @@ function App() {
   useEffect(() => {
     const fetchCitizen = async () => {
       try {
-        console.log(1)
         const response = await fetch('http://18.168.246.188:8080/citizen/read');
 
         const data = await response.json();
@@ -64,7 +63,6 @@ function App() {
     fetchCitizen();
   }, [userInput]);
 
-  console.log(2)
 
 
 
@@ -74,12 +72,13 @@ return (
 
 
   <Routes>
-    {/* <Route exact path="/" element={isCitizenSelected ? <Overview /> : <Search />} /> */}
     <Route exact path='/' element={<Home />} />
     <Route exact path="/search" element={<Search />} />
-    <Route path="/inputform" element={<InputForm />} />
     <Route path="/ATMPoint" element={<ATMPoint />} />
+    <Route path="/login" element={<Login />} />
     <Route path="/ATMTransactions" element={<ATMTransactions />} />
+    <Route path="/navbar" element={<Navbar />} />
+
     <Route path="/bankCards" element={<BankCards />} />
     <Route path="/bankAccountHolders" element={<BankAccountHolders />} />
     <Route path="/EPOSTerminal" element={<EPOSTransactions />} />
@@ -93,19 +92,17 @@ return (
     <Route path="/location" element={<Location />} />
     <Route path="/ANPRCamera" element={<ANPRCamera />} />
     <Route path="/ANPRObservations" element={<ANPRObservations />} />
-    <Route path="/landingPage" element={<LandingPage />} />
     <Route path="/vehicleRegistrations" element={<VehicleRegistrations />} />
     <Route path="/cellTowers" element={<CellTower />} />
     <Route path="/mobileCallRecords" element={<MobileCallRecords />} />
-    <Route path="/overview" element={<Overview />} />
+    <Route path="/overview/:citizenID" element={<Overview />} />
     <Route path="/vehicleOverview" element={<VehicleOverview />} />
-
+    <Route path='/search' element={<Search />} />
   </Routes>
 );
 
 const iconList = [faSearch, faCreditCard];
 
-const rootElement = document.getElementById('root');
-createRoot(rootElement).render(<Search />);
+
 };
 export default App;

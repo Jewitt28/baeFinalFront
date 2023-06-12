@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import BankCards from './bankCards';
-import BankAccountHolders from './bankAccountHolders';
+import BankCards from './Finance/bankCards';
+import BankAccountHolders from './Finance/bankAccountHolders';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FaFlag } from '@fortawesome/fontawesome-svg-core';
 

@@ -5,21 +5,18 @@ const Citizens = () => {
   const location = useLocation();
   const [citizen, setCitizen] = useState([]);
   const [hadError, setHadError] = useState(false);
+  const [pageNo, setPageNo] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    console.log(location.state)
-   
+    setCitizen([]);
     fetchCitizenDetails();
-  }, [location.state]);
+  }, [location.state, pageNo]);
 
   async function fetchCitizenDetails() {
     try {
-      // Make an API call to fetch citizen details
-      const response = await fetch(`http://18.168.246.188:8080/citizen/read`)
-      //  {${citizenId}`)(`http://http://dataset.c7d3rtdqfpxc.eu-west-2.rds.amazonaws.com/citizen`);
-    
+      const response = await fetch(`http://18.168.246.188:8080/citizen/read?page=${pageNo}&size=${pageSize}`);
       const data = await response.json();
       console.log(data);
       setCitizen(data);
@@ -30,34 +27,45 @@ const Citizens = () => {
   }
 
   function renderCitizens() {
+    
     const filters = location.state.filter;
     let dataToRender = citizen;
+
     if (filters && Object.keys(filters).length > 0) {
-      // filter out citizens which don't match the filters
-      if (filters.forenames) dataToRender = dataToRender.filter(data => data.forenames.toLowerCase().includes(filters.forenames.toLowerCase()));
-    if (filters.surname) dataToRender = dataToRender.filter(data => data.surname.toLowerCase().includes(filters.surname.toLowerCase()));
-      if (filters.startYear) dataToRender = dataToRender.filter(data => {
-        const dob = new Date(data.dateOfBirth);
-        if (dob.getFullYear() >= filters.startYear) return true;
-        else return false;
-      });
-      if (filters.endYear) dataToRender = dataToRender.filter(data => {
-        const dob = new Date(data.dateOfBirth);
-        if (dob.getFullYear() <= filters.endYear) return true;
-        else return false;
-      })
+      if (filters.forenames)
+        dataToRender = dataToRender.filter(data =>
+          data.forenames.toLowerCase().includes(filters.forenames.toLowerCase())
+        );
+      if (filters.surname)
+        dataToRender = dataToRender.filter(data =>
+          data.surname.toLowerCase().includes(filters.surname.toLowerCase())
+        );
+      if (filters.startYear)
+        dataToRender = dataToRender.filter(data => {
+          const dob = new Date(data.dateOfBirth);
+          return dob.getFullYear() >= filters.startYear;
+        });
+      if (filters.endYear)
+        dataToRender = dataToRender.filter(data => {
+          const dob = new Date(data.dateOfBirth);
+          return dob.getFullYear() <= filters.endYear;
+        });
     }
-   
-    // render the citizen data
+    console.log(dataToRender); // Check the value of dataToRender
+
+    if (!Array.isArray(dataToRender)) {
+      return null; // or any appropriate error handling
+    }
+
     return dataToRender.map(data => (
-      <tr>
+      <tr key={data.citizenId}>
         <td>{data.citizenId}</td>
         <td>{data.forenames}</td>
         <td>{data.surname}</td>
         <td>{data.address}</td>
         <td>{data.dateOfBirth}</td>
         <td>
-        <button type="button" className="overview-button" onClick={() => handleOverviewClick(data.citizenId)}>
+          <button type="button" className="overview-button" onClick={() => handleOverviewClick(data.citizenId)}>
             Overview
           </button>
         </td>
@@ -65,9 +73,18 @@ const Citizens = () => {
     ));
   }
 
-  const handleOverviewClick = (citizenId) => {
+  const handleOverviewClick = citizenId => {
     navigate(`/overview/${citizenId}`);
   };
+
+  function previousPage(event) {
+    if (pageNo > 0) setPageNo(pageNo - 1);
+  }
+
+  function nextPage(event) {
+    setPageNo(pageNo + 1);
+    console.log("PAGE:" + pageNo)
+  }
 
   if (!hadError && citizen.length === 0) {
     return <div>Loading data from API...</div>;
@@ -91,6 +108,10 @@ const Citizens = () => {
         </thead>
         <tbody>{renderCitizens()}</tbody>
       </table>
+      <div className="btn-group">
+        {pageNo > 0 && <button type="text" onClick={previousPage}>Previous</button>}
+        <button type="text" onClick={nextPage}>Next</button>
+      </div>
     </div>
   );
 };

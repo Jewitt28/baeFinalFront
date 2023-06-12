@@ -24,7 +24,7 @@ import EPOSTransactions from './comps/Finance/EPOSTransactions';
 import SubscriberRecords from './pages/subscriberRecords';
 import Overview from './pages/overview';
 import VehicleOverview from './comps/Vehicle/vehicleOverview';
-import CitizenContext from './store/citizen-context';
+// import CitizenContext from './store/citizen-context';
 import Home from './pages/Home';
 import Login from './comps/login';
 import { Navbar } from 'react-bootstrap';
@@ -34,34 +34,34 @@ import { Navbar } from 'react-bootstrap';
 function App() {
 
 
-  const citizenCtx = useContext(CitizenContext);
-  const isCitizenSelected = citizenCtx.isCitizenSelected();
-  const [citizen, setCitizen] = useState([]);
-  const [citizenFound, setCitizenFound] = useState(false);
-  const [userInput, setUserInput] = useState('');
+  // const citizenCtx = useContext(CitizenContext);
+  // const isCitizenSelected = citizenCtx.isCitizenSelected();
+  // const [citizen, setCitizen] = useState([]);
+  // const [citizenFound, setCitizenFound] = useState(false);
+  // const [userInput, setUserInput] = useState('');
 
-  useEffect(() => {
-    const fetchCitizen = async () => {
-      try {
-        const response = await fetch('http://18.168.246.188:8080/citizen/read');
+  // useEffect(() => {
+  //   const fetchCitizen = async () => {
+  //     try {
+  //       const response = await fetch('http://18.168.246.188:8080/citizen/read');
 
-        const data = await response.json();
-        setCitizen(data);
+  //       const data = await response.json();
+  //       setCitizen(data);
 
         // Check if there is a matching citizen
-        const isCitizenFound = data.some((citizen) =>
+        // const isCitizenFound = data.some((citizen) =>
           // Your matching condition logic here
           // For example, if citizen.name matches user input, set it to true
-          citizen.name === userInput
-        );
-        setCitizenFound(isCitizenFound);
-      } catch (error) {
-        console.error('Error fetching citizens:', error);
-      }
-    };
+          // citizen.name === userInput
+  //       );
+  //       setCitizenFound(isCitizenFound);
+  //     } catch (error) {
+  //       console.error('Error fetching citizens:', error);
+  //     }
+  //   };
 
-    fetchCitizen();
-  }, [userInput]);
+  //   fetchCitizen();
+  // }, [userInput]);
 
 
 

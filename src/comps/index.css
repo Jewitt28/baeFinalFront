@@ -121,16 +121,22 @@ justify-content: center;
 
 
 .overCard {
-  width: 100%;
+  /* width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* margin: 15px; */
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   justify-content: center; 
+  display: flex; */
   display: flex;
-
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* align-items: center; */
 }
 /* Styling for the table */
@@ -247,9 +253,4 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #0056b3;
-}
-
-login-container {
-
-align-self: center ;
 }

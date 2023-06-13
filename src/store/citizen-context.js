@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 
 
 
-const CitizenContext = createContext({
+export const CitizenContext = createContext({
 
     citizen: {
         citizenId: 0,

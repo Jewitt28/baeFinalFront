@@ -33,6 +33,7 @@ import { Navbar } from 'react-bootstrap';
 
 function App() {
 
+  < Navbar /> 
 
   // const citizenCtx = useContext(CitizenContext);
   // const isCitizenSelected = citizenCtx.isCitizenSelected();
